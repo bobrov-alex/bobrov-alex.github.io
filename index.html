@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander Bobrov — PPC & Growth Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:   #1c1917;
+  --mid:   #57534e;
+  --light: #a8a29e;
+  --rule:  #e7e5e4;
+  --bg:    #fafaf9;
+  --warm:  #f5f0e8;
+  --accent:#d97706;
+  --accent-light: #fef3c7;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.container { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.wide      { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+/* ─── NAV ────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,249,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 14px; color: var(--mid);
+  text-decoration: none; font-weight: 400;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #fef3c7 0%, transparent 70%);
+  opacity: .5; pointer-events: none;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero-label::before {
+  content: '';
+  width: 24px; height: 1px; background: var(--accent);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 7vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 19px; color: var(--mid); font-weight: 300;
+  max-width: 520px; line-height: 1.6;
+  margin-bottom: 40px;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: #fff;
+  padding: 14px 28px; border-radius: 100px;
+  text-decoration: none; font-size: 15px; font-weight: 500;
+  transition: transform .2s, background .2s;
+}
+.hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+.hero-cta-arrow { font-size: 18px; }
+
+/* ─── ABOUT ──────────────────────────────────────── */
+.about { padding: 80px 0; border-top: 1px solid var(--rule); }
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--light);
+  margin-bottom: 32px;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  align-items: start;
+}
+.about-text { }
+.about-text p {
+  color: var(--mid); margin-bottom: 18px; font-weight: 300;
+}
+.about-text p strong { color: var(--ink); font-weight: 500; }
+.about-aside { }
+
+.values-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.values-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 18px;
+  background: var(--warm);
+  border-radius: 12px;
+  font-size: 15px;
+}
+.values-list .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.values-list .val-text { color: var(--mid); line-height: 1.5; }
+.values-list .val-text strong { color: var(--ink); display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+
+/* ─── WHAT I DO ──────────────────────────────────── */
+.services { padding: 80px 0; border-top: 1px solid var(--rule); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  border: 1px solid var(--rule); border-radius: 16px; overflow: hidden;
+  margin-top: 32px;
+}
+.service-item {
+  padding: 28px 24px;
+  background: #fff;
+  transition: background .2s;
+}
+.service-item:hover { background: var(--warm); }
+.service-num {
+  font-family: var(--serif); font-size: 36px;
+  color: var(--rule); line-height: 1;
+  margin-bottom: 16px;
+}
+.service-title {
+  font-size: 16px; font-weight: 500; color: var(--ink);
+  margin-bottom: 8px;
+}
+.service-desc { font-size: 14px; color: var(--mid); line-height: 1.55; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 9px; border-radius: 100px;
+  background: var(--rule); color: var(--mid);
+}
+
+/* ─── STATS ──────────────────────────────────────── */
+.stats { padding: 64px 0; background: var(--ink); margin: 80px 0 0; }
+.stats-inner {
+  max-width: 720px; margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.stat-item {
+  padding: 8px 0;
+  border-right: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+}
+.stat-item:first-child { border-left: none; }
+.stat-item:last-child  { border-right: none; }
+.stat-val {
+  font-family: var(--serif); font-size: 36px;
+  color: #fff; line-height: 1; margin-bottom: 8px;
+}
+.stat-val em { color: var(--accent); font-style: normal; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,.45); font-weight: 300; }
+
+/* ─── CASES ──────────────────────────────────────── */
+.cases { padding: 80px 0; }
+.cases-intro {
+  max-width: 520px; color: var(--mid); font-weight: 300;
+  margin-bottom: 48px; font-size: 18px; line-height: 1.6;
+}
+.case-card {
+  border: 1px solid var(--rule);
+  border-radius: 16px; overflow: hidden;
+  margin-bottom: 16px;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fff;
+}
+.case-card:hover {
+  border-color: #d6d3d1;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.case-header {
+  padding: 28px 32px;
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 24px;
+  cursor: pointer;
+}
+.case-meta { flex: 1; }
+.case-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.badge {
+  font-size: 11px; font-weight: 500; padding: 3px 10px;
+  border-radius: 100px; letter-spacing: .02em;
+}
+.badge-google { background: #dcfce7; color: #166534; }
+.badge-meta   { background: #f3e8ff; color: #581c87; }
+.badge-yt     { background: #fee2e2; color: #991b1b; }
+.badge-b2b    { background: #e0f2fe; color: #0c4a6e; }
+.badge-growth { background: #fef9c3; color: #713f12; }
+
+.case-title {
+  font-family: var(--serif);
+  font-size: 22px; color: var(--ink);
+  margin-bottom: 6px; line-height: 1.2;
+}
+.case-subtitle { font-size: 14px; color: var(--light); }
+.case-arrow {
+  font-size: 20px; color: var(--light);
+  transition: transform .2s, color .2s;
+  flex-shrink: 0; margin-top: 4px;
+}
+.case-card:hover .case-arrow { transform: translateX(3px); color: var(--ink); }
+
+.case-body {
+  padding: 0 32px 28px;
+  display: none;
+  border-top: 1px solid var(--rule);
+}
+.case-body.open { display: block; padding-top: 24px; }
+
+.case-metrics {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1px; background: var(--rule);
+  border-radius: 10px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.case-metric {
+  background: var(--warm);
+  padding: 14px 16px; text-align: center;
+}
+.case-metric-val {
+  font-family: var(--serif); font-size: 24px;
+  color: var(--ink); line-height: 1;
+}
+.case-metric-label { font-size: 11px; color: var(--light); margin-top: 4px; }
+
+.case-story { font-size: 15px; color: var(--mid); line-height: 1.65; margin-bottom: 16px; }
+.case-story strong { color: var(--ink); font-weight: 500; }
+
+.case-steps { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.case-step {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14px; color: var(--mid);
+}
+.step-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.insight-pull {
+  margin-top: 20px; padding: 16px 20px;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px; color: #78350f; line-height: 1.55;
+  font-style: italic;
+}
+
+/* ─── PROCESS ────────────────────────────────────── */
+.process { padding: 80px 0; border-top: 1px solid var(--rule); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 32px; margin-top: 40px;
+}
+.process-step { }
+.process-num {
+  font-family: var(--serif); font-size: 48px;
+  color: var(--rule); line-height: 1; margin-bottom: 12px;
+}
+.process-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+.process-desc { font-size: 13px; color: var(--mid); line-height: 1.55; }
+
+/* ─── CONTACT ────────────────────────────────────── */
+.contact { padding: 100px 0; border-top: 1px solid var(--rule); }
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+.contact h2 {
+  font-family: var(--serif); font-size: 42px;
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.contact h2 em { font-style: italic; color: var(--accent); }
+.contact-text { font-size: 16px; color: var(--mid); font-weight: 300; line-height: 1.6; margin-bottom: 32px; }
+.contact-note {
+  font-size: 13px; color: var(--light); line-height: 1.55;
+  padding: 14px 16px; border: 1px solid var(--rule);
+  border-radius: 10px; background: var(--warm);
+}
+.contact-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 500; color: var(--ink);
+  text-decoration: none; padding: 18px 32px;
+  border: 2px solid var(--ink); border-radius: 100px;
+  transition: all .2s;
+}
+.contact-link:hover {
+  background: var(--ink); color: #fff;
+  transform: translateY(-2px);
+}
+.contact-aside { }
+.contact-facts { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.contact-facts li {
+  display: flex; gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+}
+.contact-facts li:last-child { border-bottom: none; }
+.fact-label { color: var(--light); min-width: 100px; }
+.fact-val { color: var(--ink); font-weight: 400; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  padding: 24px 28px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--light);
+}
+
+/* ─── FADE IN ────────────────────────────────────── */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 720px) {
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,.1); }
+  .stat-item { border-right: none; padding: 20px 0; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 38px; }
+  .case-header { flex-direction: column; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Alexander Bobrov</a>
+  <ul class="nav-links">
+    <li><a href="#about">О себе</a></li>
+    <li><a href="#services">Чем занимаюсь</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#contact">Написать</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">PPC · Google Ads · Meta Ads · YouTube Ads</div>
+    <h1>Реклама, которая<br>работает <em>на бизнес,</em><br>а не просто крутится</h1>
+    <p class="hero-sub">
+      Помогаю владельцам бизнеса получать клиентов через платный трафик.
+      Без магии и обещаний — только система, цифры и честный разговор.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Обсудить проект <span class="hero-cta-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label">О себе</div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>
+          Меня зовут Александр. Я занимаюсь платной рекламой уже <strong>больше 4 лет</strong> —
+          и параллельно работаю коммерческим директором в B2B SaaS-компании Instasport,
+          где больше 10 лет выстраиваю продажи.
+        </p>
+        <p>
+          Это даёт мне кое-что редкое: я смотрю на рекламу <strong>глазами бизнеса,</strong>
+          а не просто глазами специалиста по кабинетам. Мне важно понять
+          как устроены продажи, какой клиент нужен и что происходит после клика.
+        </p>
+        <p>
+          Я не берусь за всё подряд. Мне важно, чтобы между нами было понимание
+          и совпадение ценностей — тогда работа идёт хорошо для обоих.
+        </p>
+      </div>
+      <div class="about-aside">
+        <ul class="values-list">
+          <li>
+            <span class="icon">🔍</span>
+            <div class="val-text">
+              <strong>Аналитика прежде всего</strong>
+              Смотрю на бизнес сверху, не только на CTR и CPC.
+              Реклама — это часть системы, а не отдельный виджет.
+            </div>
+          </li>
+          <li>
+            <span class="icon">🤝</span>
+            <div class="val-text">
+              <strong>Честность без «впаривания»</strong>
+              Если реклама не поможет — скажу об этом прямо,
+              прежде чем взять деньги.
+            </div>
+          </li>
+          <li>
+            <span class="icon">🎯</span>
+            <div class="val-text">
+              <strong>Избирательность в проектах</strong>
+              Работаю с теми, чей продукт мне нравится
+              и чьи ценности близки. Это даёт лучший результат.
+            </div>
+          </li>
+          <li>
+            <span class="icon">📈</span>
+            <div class="val-text">
+              <strong>Партнёрский подход</strong>
+              Интересует не просто «выполнить задачу», а помочь бизнесу расти.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">Чем занимаюсь</div>
+    <div class="services-grid fade-up">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-title">Google Ads Search</div>
+        <div class="service-desc">
+          Лидогенерация и продажи через поиск.
+          Семантика, структура, объявления, конверсии.
+          Особенно хорошо работаю с B2B.
+        </div>
+        <div class="service-tags">
+          <span class="tag">Search</span>
+          <span class="tag">B2B</span>
+          <span class="tag">Lead Gen</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-title">Meta Ads</div>
+        <div class="service-desc">
+          Facebook и Instagram: трафик, лиды, рост аудитории.
+          Работаю с холодным трафиком и ретаргетингом,
+          разными гео и языками.
+        </div>
+        <div class="service-tags">
+          <span class="tag">Facebook</span>
+          <span class="tag">Instagram</span>
+          <span class="tag">Ретаргетинг</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-title">YouTube Ads</div>
+        <div class="service-desc">
+          Demand Gen кампании для роста канала
+          и охвата на международных рынках.
+          Опыт работы с англоязычной аудиторией в США.
+        </div>
+        <div class="service-tags">
+          <span class="tag">Demand Gen</span>
+          <span class="tag">США</span>
+          <span class="tag">Международка</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner fade-up">
+    <div class="stat-item">
+      <div class="stat-val"><em>4</em>+</div>
+      <div class="stat-label">лет в рекламе</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">~<em>28k</em></div>
+      <div class="stat-label">подписчиков привлечено</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val"><em>6,9</em>×</div>
+      <div class="stat-label">ROAS на вебинарах</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val"><em>4</em></div>
+      <div class="stat-label">языка и 9+ гео</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-label">Кейсы</div>
+    <p class="cases-intro fade-up">
+      Реальные проекты с реальными цифрами.
+      Нажмите на любой — расскажу что делал и почему это сработало.
+    </p>
+
+    <!-- S1 -->
+    <div class="case-card fade-up">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-meta">
+          <div class="case-badges">
+            <span class="badge badge-google">Google Search</span>
+            <span class="badge badge-growth">Финтех</span>
+          </div>
+          <div class="case-title">BondUA — инвестиционное приложение</div>
+          <div class="case-subtitle">304 установки · CPA 13 грн · CTR 31,6%</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-val">304</div><div class="case-metric-label">установки</div></div>
+          <div class="case-metric"><div class="case-metric-val">13 грн</div><div class="case-metric-label">CPA</div></div>
+          <div class="case-metric"><div class="case-metric-val">31,6%</div><div class="case-metric-label">CTR</div></div>
+          <div class="case-metric"><div class="case-metric-val">0,51 грн</div><div class="case-metric-label">CPC</div></div>
+          <div class="case-metric"><div class="case-metric-val">3 966 грн</div><div class="case-metric-label">бюджет</div></div>
+        </div>
+        <p class="case-story">
+          Клиент — приложение для инвестиций в государственные облигации Украины.
+          Задача: установки при минимальной стоимости. <strong>Ключ был в интенте:</strong>
+          люди, которые ищут «купить ОВГЗ» или «инвестиции в облигации» — уже готовы к действию.
+          Нужно было просто оказаться рядом с правильным предложением.
+        </p>
+        <ul class="case-steps">
+          <li class="case-step"><div class="step-dot">1</div>Собрал семантику под точный интент — только коммерческие запросы</li>
+          <li class="case-step"><div class="step-dot">2</div>Структура кампаний по типу намерения: информационные отдельно, транзакционные отдельно</li>
+          <li class="case-step"><div class="step-dot">3</div>Конверсии через клики на «Установить iOS/Android» — сверялись с Firebase</li>
+        </ul>
+        <div class="insight-pull">
+          CTR 31,6% — это в 3–5 раз выше среднего по Search. Когда объявление точно попадает в то, что человек ищет, никаких уловок не нужно.
+        </div>
+      </div>
+    </div>
+
+    <!-- S2 -->
+    <div class="case-card fade-up">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-meta">
+          <div class="case-badges">
+            <span class="badge badge-google">Google Search</span>
+            <span class="badge badge-b2b">B2B SaaS</span>
+          </div>
+          <div class="case-title">Instasport — CRM для фитнес-клубов</div>
+          <div class="case-subtitle">302 B2B-лида · CPA 241 грн · CR 4,84% · 14 месяцев</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-val">302</div><div class="case-metric-label">лида</div></div>
+          <div class="case-metric"><div class="case-metric-val">241 грн</div><div class="case-metric-label">CPA</div></div>
+          <div class="case-metric"><div class="case-metric-val">4,84%</div><div class="case-metric-label">CR сайта</div></div>
+          <div class="case-metric"><div class="case-metric-val">~90%</div><div class="case-metric-label">конверсий аккаунта</div></div>
+          <div class="case-metric"><div class="case-metric-val">14 мес.</div><div class="case-metric-label">в работе</div></div>
+        </div>
+        <p class="case-story">
+          B2B SaaS — сложная ниша для рекламы: аудитория узкая, цикл сделки длинный,
+          решение принимается не сразу. <strong>Я работаю в этой компании сам,</strong>
+          поэтому понимаю продукт изнутри — это сильно помогло с формулировками и аудиторией.
+        </p>
+        <ul class="case-steps">
+          <li class="case-step"><div class="step-dot">1</div>Intent-based структура: проблемные, продуктовые и конкурентные запросы — раздельно</li>
+          <li class="case-step"><div class="step-dot">2</div>Семантика под управляющих и владельцев фитнес-клубов — очень узкий сегмент</li>
+          <li class="case-step"><div class="step-dot">3</div>Стратегия «Максимум конверсий» — обучил кампанию на заявки, 14 месяцев оптимизации</li>
+        </ul>
+        <div class="insight-pull">
+          Одна кампания дала ~90% всех конверсий аккаунта. Узкая аудитория — не проблема, если точно попасть в интент.
+        </div>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="case-card fade-up">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-meta">
+          <div class="case-badges">
+            <span class="badge badge-meta">Meta Ads</span>
+            <span class="badge badge-b2b">B2B SaaS</span>
+          </div>
+          <div class="case-title">Instasport — лиды через Meta Ads</div>
+          <div class="case-subtitle">40 лидов · CPL 5,99€ · Instant Form</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-val">40</div><div class="case-metric-label">лидов</div></div>
+          <div class="case-metric"><div class="case-metric-val">5,99 €</div><div class="case-metric-label">CPL</div></div>
+          <div class="case-metric"><div class="case-metric-val">239 €</div><div class="case-metric-label">расход</div></div>
+          <div class="case-metric"><div class="case-metric-val">3 мес.</div><div class="case-metric-label">кампания</div></div>
+        </div>
+        <p class="case-story">
+          Meta — не поисковый канал, там нет горячего интента. Но <strong>5,99 € за B2B-лид</strong>
+          в нише CRM — это очень хороший результат. Секрет прост: минимум полей в форме,
+          правильная аудитория и оффер который говорит на языке владельца клуба.
+        </p>
+        <ul class="case-steps">
+          <li class="case-step"><div class="step-dot">1</div>Instant Lead Form — форма внутри приложения, без перехода на сайт</li>
+          <li class="case-step"><div class="step-dot">2</div>Аудитории по интересам + ретаргетинг на посетителей сайта</li>
+          <li class="case-step"><div class="step-dot">3</div>ТЗ на креативы: сравнение CRM с блокнотом — понятный владельцам клуба образ</li>
+        </ul>
+        <div class="insight-pull">
+          Меньше полей в форме — больше заявок. Это работает везде, но особенно в B2B где время = деньги.
+        </div>
+      </div>
+    </div>
+
+    <!-- S4 -->
+    <div class="case-card fade-up">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-meta">
+          <div class="case-badges">
+            <span class="badge badge-meta">Meta Ads</span>
+            <span class="badge badge-growth">Instagram Growth</span>
+          </div>
+          <div class="case-title">Aaron Rainer Healing — рост в Instagram</div>
+          <div class="case-subtitle">2 670 подписчиков · CPS $1,58 · 6 месяцев · 140+ тестов</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-val">2 670</div><div class="case-metric-label">подписчиков</div></div>
+          <div class="case-metric"><div class="case-metric-val">$1,10</div><div class="case-metric-label">CPS · Киев</div></div>
+          <div class="case-metric"><div class="case-metric-val">99k+</div><div class="case-metric-label">взаимодействий</div></div>
+          <div class="case-metric"><div class="case-metric-val">140+</div><div class="case-metric-label">тестов за 6 мес.</div></div>
+        </div>
+        <p class="case-story">
+          Ниша целительства и трансформационных практик — непростая для рекламы.
+          Аудитория чувствует неаутентичность. Работали 6 месяцев системно:
+          <strong>две параллельные стратегии</strong> — холодный трафик на подписку
+          и прогрев тёплой аудитории через взаимодействие с контентом.
+        </p>
+        <ul class="case-steps">
+          <li class="case-step"><div class="step-dot">1</div>Разделили гео: Киев ($1,10/подп.) и Польша — русскоязычная диаспора ($2,80/подп.)</li>
+          <li class="case-step"><div class="step-dot">2</div>Тёплая аудитория: ретаргетинг на всех кто взаимодействовал за 365 дней</li>
+          <li class="case-step"><div class="step-dot">3</div>140+ адсетов за 6 месяцев — системное тестирование, не угадывание</li>
+        </ul>
+        <div class="insight-pull">
+          В нишах с личным контентом хорошая реклама — это усилитель хорошего контента. Наша задача — показать нужным людям то, что уже работает органически.
+        </div>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="case-card fade-up">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-meta">
+          <div class="case-badges">
+            <span class="badge badge-yt">YouTube Ads</span>
+            <span class="badge badge-meta">Meta Ads</span>
+            <span class="badge badge-growth">4 языка · 9+ гео</span>
+          </div>
+          <div class="case-title">Александр Палиенко — международный личный бренд</div>
+          <div class="case-subtitle">~28 000 подписчиков · ROAS 6,9× · США, Европа, Украина</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </div>
+      <div class="case-body">
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-val">19 841</div><div class="case-metric-label">YouTube подп.</div></div>
+          <div class="case-metric"><div class="case-metric-val">$0,94</div><div class="case-metric-label">CPS · США</div></div>
+          <div class="case-metric"><div class="case-metric-val">6,9×</div><div class="case-metric-label">ROAS вебинары</div></div>
+          <div class="case-metric"><div class="case-metric-val">4</div><div class="case-metric-label">языка одновременно</div></div>
+          <div class="case-metric"><div class="case-metric-val">€31 500</div><div class="case-metric-label">выручка с вебинаров</div></div>
+        </div>
+        <p class="case-story">
+          Александр Палиенко — эксперт по саморазвитию, 650 000+ подписчиков на русскоязычном YouTube.
+          Задача: выйти на международные рынки. <strong>Одновременно вёл рекламу на 4 языках
+          в 9 странах</strong> — английский YouTube с нуля в США, Instagram-страницы на испанском,
+          немецком, английском, продажи вебинаров по €300.
+        </p>
+        <ul class="case-steps">
+          <li class="case-step"><div class="step-dot">1</div>YouTube Demand Gen: английский канал с нуля → 19 841 подписчик, CPS $0,94</li>
+          <li class="case-step"><div class="step-dot">2</div>Meta: 4 Instagram-страницы на разных языках — ESP, ENG, DEU, RU</li>
+          <li class="case-step"><div class="step-dot">3</div>Вебинары: 105 продаж × 300€ = €31 500 выручки при расходе €4 589</li>
+        </ul>
+        <div class="insight-pull">
+          Международная реклама — это не «перевести объявления». У каждого рынка своя аудитория, свой контекст и своя цена клика. Единая стратегия здесь не работает.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-label">Как я работаю</div>
+    <div class="process-steps fade-up">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-title">Разбираюсь в бизнесе</div>
+        <div class="process-desc">Сначала понимаю как устроены продажи, кто клиент и что происходит после клика. Реклама — это последний шаг, не первый.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-title">Предлагаю стратегию</div>
+        <div class="process-desc">Говорю честно — что сработает, что нет и почему. Если реклама не решит проблему, скажу об этом до старта.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-title">Запускаю и тестирую</div>
+        <div class="process-desc">Структура, семантика, аудитории, объявления. Не угадываю — тестирую системно и принимаю решения по данным.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-title">Отчитываюсь понятно</div>
+        <div class="process-desc">Не просто CTR и CPC, а что это значит для бизнеса. Всегда в контексте цели — лиды, продажи, рост аудитории.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner fade-up">
+      <div>
+        <div class="section-label">Написать</div>
+        <h2>Есть проект?<br><em>Давайте поговорим.</em></h2>
+        <p class="contact-text">
+          Расскажите о бизнесе и задаче — я отвечу честно,
+          подходит ли мне этот проект и чем могу помочь.
+          Без продажи и без обязательств.
+        </p>
+        <a href="https://t.me/o_bobrov" target="_blank" class="contact-link">
+          Написать в Telegram →
+        </a>
+        <div class="contact-note" style="margin-top: 20px;">
+          Я не работаю со всеми подряд — мне важно понять продукт и разделять ценности с клиентом.
+          Если не подходим друг другу — так и скажу, и возможно порекомендую кого-то другого.
+        </div>
+      </div>
+      <div class="contact-aside">
+        <ul class="contact-facts">
+          <li><span class="fact-label">Специализация</span><span class="fact-val">Google Ads · Meta Ads · YouTube Ads</span></li>
+          <li><span class="fact-label">Опыт</span><span class="fact-val">4+ года в рекламе, 10+ лет в B2B продажах</span></li>
+          <li><span class="fact-label">Ниши</span><span class="fact-val">B2B SaaS, инфобизнес, личные бренды, финтех</span></li>
+          <li><span class="fact-label">Гео</span><span class="fact-val">Украина, Европа, США — мультигео</span></li>
+          <li><span class="fact-label">Языки</span><span class="fact-val">RU, UA — вёл кампании на 4 языках</span></li>
+          <li><span class="fact-label">Telegram</span><span class="fact-val"><a href="https://t.me/o_bobrov" style="color:var(--accent);text-decoration:none">@o_bobrov</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Alexander Bobrov</div>
+  <div>PPC · Google Ads · Meta Ads · YouTube Ads</div>
+</footer>
+
+<script>
+// Toggle case
+function toggleCase(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  const arrow = header.querySelector('.case-arrow');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(90deg)' : '';
+}
+
+// Fade in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
